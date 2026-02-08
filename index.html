@@ -1,90 +1,124 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>San Valentín 💘</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>San Valentín 💘</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
+<style>
+* {
+    box-sizing: border-box;
+}
 
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 20px;
-            max-width: 420px;
-            width: 100%;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            text-align: center;
-        }
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: hidden;
+}
 
-        h1 {
-            color: #e63946;
-            font-size: 22px;
-            margin-bottom: 20px;
-        }
+/* CARD */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 22px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    text-align: center;
+    animation: aparecer 0.8s ease;
+}
 
-        .botones {
-            position: relative;
-            height: 130px;
-        }
+@keyframes aparecer {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
 
-        button {
-            width: 100%;
-            max-width: 260px;
-            padding: 14px;
-            font-size: 18px;
-            border: none;
-            border-radius: 16px;
-            cursor: pointer;
-            display: block;
-            margin: 0 auto;
-        }
+h1 {
+    color: #e63946;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
 
-        .si {
-            background-color: #ff4d6d;
-            color: white;
-        }
+/* BOTONES */
+.botones {
+    position: relative;
+    height: 140px;
+}
 
-        .no {
-            background-color: #6c757d;
-            color: white;
-            position: absolute;
-            top: 60px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+button {
+    width: 100%;
+    max-width: 260px;
+    padding: 14px;
+    font-size: 18px;
+    border: none;
+    border-radius: 18px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
 
-        img {
-            width: 100%;
-            border-radius: 16px;
-            margin-top: 15px;
-        }
+.si {
+    background-color: #ff4d6d;
+    color: white;
+}
 
-        .frase {
-            margin-top: 18px;
-            font-size: 16px;
-            color: #e63946;
-            line-height: 1.5;
-        }
+.no {
+    background-color: #6c757d;
+    color: white;
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
-        .hidden {
-            display: none;
-        }
-    </style>
+/* RESULTADO */
+.hidden {
+    display: none;
+}
+
+img {
+    width: 100%;
+    border-radius: 18px;
+    margin-top: 15px;
+}
+
+.frase {
+    margin-top: 18px;
+    font-size: 16px;
+    color: #e63946;
+    line-height: 1.6;
+}
+
+/* CORAZONES */
+.heart {
+    position: absolute;
+    color: rgba(255, 0, 80, 0.6);
+    font-size: 20px;
+    animation: flotar 5s linear infinite;
+}
+
+@keyframes flotar {
+    from {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+    }
+}
+</style>
 </head>
+
 <body>
 
-<!-- PANTALLA INICIAL -->
+<!-- MENÚ -->
 <div class="card" id="menu">
     <h1>💘 ¿Quieres ser mi San Valentín? 💘</h1>
 
@@ -94,55 +128,78 @@
     </div>
 </div>
 
-<!-- PANTALLA SÍ -->
-<div class="card hidden" id="si">
+<!-- RESULTADO -->
+<div class="card hidden" id="resultado">
     <h1>💖 Entonces ya está decidido 💖</h1>
 
+    <!-- CAMBIA EL NOMBRE DE LA FOTO -->
     <img src="foto_san_valentin.jpg" alt="Nuestra foto">
 
     <div class="frase">
         Gracias, mi <strong>ram</strong>, por aceptar ser mi <strong>San Valentín</strong> una vez más 💕💘<br><br>
+
         Eres el amor de mi vida y mi mayor motivación, junto a nuestra <strong>Tanita</strong> 🥰👶🐾,
         nuestros bebés perrunos y gatunos 🐶🐱💕.<br><br>
-        Son mi familia, mi hogar y mi todo 🏡❤️.<br><br>
+
+        Son mi familia, mi hogar y mi todo 🏡❤️.
+        Siempre me esforzaré por darles todo lo que se merecen ✨💪.<br><br>
+
         Gracias por hacerme el hombre más feliz del mundo 🌍💖.<br>
         Te amo, <strong>amor de mi vida</strong> 💕💞
     </div>
 </div>
 
+<!-- MÚSICA (opcional) -->
+<audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
 <script>
-    const btnNo = document.getElementById("btnNo");
-    const menu = document.getElementById("menu");
-    const si = document.getElementById("si");
-    const contenedor = document.querySelector(".botones");
+const btnNo = document.getElementById("btnNo");
+const menu = document.getElementById("menu");
+const resultado = document.getElementById("resultado");
+const contenedor = document.querySelector(".botones");
+const musica = document.getElementById("musica");
 
-    function aceptar() {
-        menu.classList.add("hidden");
-        si.classList.remove("hidden");
-    }
+function aceptar() {
+    menu.classList.add("hidden");
+    resultado.classList.remove("hidden");
+    musica.play();
+    crearCorazones();
+}
 
-    function moverBoton() {
-        const contRect = contenedor.getBoundingClientRect();
-        const btnRect = btnNo.getBoundingClientRect();
+function moverBoton() {
+    const contRect = contenedor.getBoundingClientRect();
+    const btnRect = btnNo.getBoundingClientRect();
 
-        const maxX = contRect.width - btnRect.width;
-        const maxY = contRect.height - btnRect.height;
+    const maxX = contRect.width - btnRect.width;
+    const maxY = contRect.height - btnRect.height;
 
-        const x = Math.random() * maxX;
-        const y = Math.random() * maxY;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
 
-        btnNo.style.left = x + "px";
-        btnNo.style.top = y + "px";
-    }
+    btnNo.style.left = x + "px";
+    btnNo.style.top = y + "px";
+}
 
-    // PC
-    btnNo.addEventListener("mouseenter", moverBoton);
+btnNo.addEventListener("mouseenter", moverBoton);
+btnNo.addEventListener("touchstart", moverBoton);
 
-    // Celular
-    btnNo.addEventListener("touchstart", moverBoton);
+function crearCorazones() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (15 + Math.random() * 20) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }, 300);
+}
 </script>
 
 </body>
 </html>
-
-
